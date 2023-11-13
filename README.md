@@ -1,9 +1,40 @@
 # My Babylonjs Practice 👩🏻‍💻
 
 ## Table of Contents
-1. [Vertex Shader / Fragment Shader](#vertex-shader와-fragment-shader에-대해)
+- [Canvas, Engine, Scene, Camera](#canvas-engine-scene-camera)
+-  [Vertex Shader / Fragment Shader](#vertex-shader와-fragment-shader에-대해)
 
 <br/>
+
+## Canvas, Engine, Scene, Camera
+
+Babylon.js에서 3D 그래픽스를 렌더링하는 데 필수적인 요소들이다.
+
+1. **Canvas**:
+- Canvas는 웹 페이지에 그래픽을 그리기 위한 HTML 요소이다. WebGL과 Babylon.js는 이 Canvas 위에서 그래픽스를 렌더링한다.
+- Canvas는 2D 및 3D 그래픽스를 위한 그리기 영역을 제공하며, JavaScript를 사용하여 이를 조작할 수 있다.
+
+<br/>
+
+2. **Engine**:
+- Engine은 Babylon.js의 핵심 구성 요소로, WebGL 렌더링 컨텍스트를 관리한다. 이는 3D 그래픽스를 렌더링하기 위한 모든 기본적인 설정과 처리를 담당한다.
+- Engine은 Canvas와 연동되어 있으며, 렌더링 루프와 함께 작동하여 실시간으로 3D 그래픽스를 화면에 표시한다.
+
+<br/>
+
+3. **Scene**:
+- Scene은 3D 그래픽스가 렌더링되는 환경이다. 이는 모든 3D 객체, 카메라, 라이트, 물리적 특성 등을 포함하는 컨테이너다.
+- Scene은 가상의 3D 세계를 나타내며, 사용자가 만들고자 하는 3D 환경의 모든 요소를 구성한다.
+
+<br/>
+
+4. **Camera**:
+- Camera는 3D Scene에서의 관점을 정의한다. 이는 사용자가 3D 공간을 어떻게 보고 인식하는지 결정한다.
+- Babylon.js에서 다양한 유형의 카메라를 사용할 수 있으며, 이들은 회전, 줌, 이동 등 다양한 방식으로 Scene을 관찰할 수 있게 한다.
+
+<br/>
+<br/>
+
 
 ## Vertex Shader와 Fragment Shader에 대해
 
