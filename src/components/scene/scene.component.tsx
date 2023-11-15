@@ -12,7 +12,8 @@ export const SceneComponent: FC<ISceneComponentProps> = ({}) => {
 
     if (!canvas) return;
 
-    const engine = new Engine(canvas);
+    // antialias option 활성화
+    const engine = new Engine(canvas, true);
 
     const scene = new Scene(engine);
 

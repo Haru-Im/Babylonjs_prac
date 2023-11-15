@@ -3,6 +3,9 @@
 ## Table of Contents
 - [Canvas, Engine, Scene, Camera](#canvas-engine-scene-camera)
 -  [Vertex Shader / Fragment Shader](#vertex-shader와-fragment-shader에-대해)
+- [Engine Options](#engine-options)
+    - [antialias](#antialias)
+
 
 <br/>
 
@@ -61,3 +64,20 @@ Babylon.js에서 3D 그래픽스를 렌더링하는 데 필수적인 요소들�
 - 프래그먼트 셰이더는 이 데이터를 사용하여 각 픽셀의 최종 색상과 텍스처를 결정한다. 이 과정에서 버텍스 셰이더로부터 전달받은 정보와 텍스처, 라이팅 정보 등을 결합하여 픽셀별로 처리한다.
 - 이 두 셰이더의 조합은 3D 그래픽스에서 물체의 형태, 색상, 조명, 질감 등을 정교하게 표현하는 데 필수적이다. 이들은 GPU의 병렬 처리 능력을 활용하여 고성능 그래픽 렌더링을 가능하게 한다.
 
+<br/>
+
+## Engine Options
+
+### antialias
+
+antialias 옵션은 MSAA(Multisample Anti-Aliasing)를 캔버스에 적용할 것인지를 결정하는 기능이다. MSAA는 그래픽 렌더링 과정에서 객체의 가장자리를 부드럽게 처리하여, 계단 현상(jaggies)을 감소시키는 방법이다. 이 방법은 각 픽셀 주변의 여러 샘플을 취하여 평균 색을 계산함으로써 가장자리를 더 매끄럽게 만든다. 이런 처리는 3D 그래픽스에서 특히 중요하며, 더 높은 화질의 이미지를 제공한다. Antialias 옵션을 활성화하면 이미지의 전반적인 시각적 품질이 향상되지만, 그만큼 그래픽 처리에 더 많은 자원이 소모될 수 있다.  
+
+#### Engine에서 antialias 옵션 활성화하는 방법
+
+React 컴포넌트에서 BabylonJS의 antialias 옵션을 추가하려면, `Engine` 객체를 생성할 때 antialias 옵션을 활성화해야 한다. `Engine` 생성자는 antialias를 활성화할 수 있는 옵션을 제공한다.
+
+```javascript
+const engine = new Engine(canvas, true); // antialias를 활성화
+```
+
+위의 코드에서 `true` 값은 antialias를 활성화하겠다는 것을 의미한다. 이 변경을 통해 생성되는 3D 그래픽스의 가장자리가 더 부드러워질 것이다.
