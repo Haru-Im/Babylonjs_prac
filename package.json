@@ -7,6 +7,7 @@
     "@babylonjs/gui": "6.28.0",
     "@babylonjs/gui-editor": "6.28.0",
     "@babylonjs/inspector": "6.28.0",
+    "@babylonjs/serializers": "6.28.0",
     "@babylonjs/loaders": "6.28.0",
     "@babylonjs/materials": "6.28.0",
     "@testing-library/jest-dom": "^5.14.1",

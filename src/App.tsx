@@ -1,11 +1,12 @@
 import { FC } from 'react';
-import { SceneComponent } from './components';
+import { MirrorPlanetsScene } from './scenes';
+
 type IAppProps = {};
 
 export const App: FC<IAppProps> = ({}) => {
   return (
     <div id="app">
-      <SceneComponent />;
+      <MirrorPlanetsScene />;
     </div>
   );
 };
