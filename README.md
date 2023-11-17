@@ -1,13 +1,13 @@
-# My Babylonjs Practice 👩🏻‍💻
+# My Babylonjs Practice with React, TypeScript 👩🏻‍💻
 
 ## Table of Contents
 - [Canvas, Engine, Scene, Camera](#canvas-engine-scene-camera)
--  [Vertex Shader / Fragment Shader](#vertex-shader와-fragment-shader에-대해)
+-  [Shaders](#shaders)
 - [Colors](#colors)
 - [Lights](#lights)
 - [Engine Options](#engine-options)
     - [antialias](#antialias)
-
+- [Inspector](#inspector)
 
 <br/>
 
@@ -41,7 +41,7 @@ Babylon.js에서 3D 그래픽스를 렌더링하는 데 필수적인 요소들�
 <br/>
 
 
-## Vertex Shader와 Fragment Shader에 대해
+## Shaders
 
 버텍스 셰이더(Vertex Shader)와 프래그먼트 셰이더(Fragment Shader)는 3D 그래픽 렌더링 과정에서 중요한 역할을 한다.   
 이들은 GPU의 셰이더 파이프라인의 핵심 구성 요소이다.
@@ -136,3 +136,31 @@ const engine = new Engine(canvas, true); // antialias를 활성화
 ```
 
 위의 코드에서 `true` 값은 antialias를 활성화하겠다는 것을 의미한다. 이 변경을 통해 생성되는 3D 그래픽스의 가장자리가 더 부드러워질 것이다.
+
+<br/>
+<br/>
+
+## Inspector
+
+#### Inspector의 특징:
+
+- 실시간으로 씬의 구조와 속성을 볼 수 있어 디버깅과 개발 과정을 간소화한다.
+- 오브젝트, 라이트, 카메라, 물리 엔진 설정 등을 시각적으로 조정할 수 있다.
+- 성능 모니터링 기능을 통해 프레임 레이트와 자원 사용량을 확인할 수 있다.
+
+#### 필요 라이브러리
+
+```
+yarn add @babylonjs/inspector 
+```
+
+
+#### 사용 방법
+
+```javascript
+Inspector.Show() // Inspector 열기
+Inspector.Hide()
+Inspector.IsVisible
+```
+
+Inspector를 import한 다음 Inspector 객체 내의 메서드를 활용해 Inspector를 열고 닫을 수 있다.
