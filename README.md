@@ -158,7 +158,7 @@ yarn add @babylonjs/inspector
 #### 사용 방법
 
 ```javascript
-Inspector.Show() // Inspector 열기
+Inspector.Show(scene, userOptions) // Inspector 열기
 Inspector.Hide()
 Inspector.IsVisible
 ```
