@@ -9,6 +9,7 @@
 - [Lights](#lights)
 - [Engine Options](#engine-options)
     - [antialias](#antialias)
+- [Material](#material)
 - [Inspector](#inspector)
 
 <br/>
@@ -205,6 +206,104 @@ const engine = new Engine(canvas, true); // antialias를 활성화
 
 <br/>
 <br/>
+
+
+## Material
+
+
+1. **Material의 정의**:
+- Material은 3D 객체의 표면 특성을 정의하는 데 사용된다.
+- 이는 객체의 색상, 질감, 광택 등을 결정한다.
+
+<br/>
+
+2. **StandardMaterial**:
+- `StandardMaterial`은 기본적인 Material 유형이다.
+- 이는 객체의 색상과 질감 등 기본적인 시각적 특성을 설정하는 데 사용된다.
+- 예시:
+    ```javascript
+    var stdMat = new BABYLON.StandardMaterial("stdMat", scene);
+    stdMat.diffuseColor = BABYLON.Color3.Random(); // 색상 변경
+    sphere.material = stdMat; // sphere에 material 적용
+    ```
+   - 2-1. **diffuseColor의 역할**:
+     - `diffuseColor`는 Material의 기본 색상을 설정한다.
+     - 이는 빛에 의해 직접적으로 반사되는 색을 나타낸다.
+     - `BABYLON.Color3` 함수를 사용하여 무작위 색상을 생성할 수 있다.
+
+<br/>
+
+3. **PBRMaterial**:
+- `PBRMaterial`은 물리 기반 렌더링(PBR) Material이다.
+- 이는 물체의 표면이 실제 세계의 물리 법칙에 따라 빛을 반사하고 흡수하는 방식을 모방한다.
+- 예시:
+    ```javascript
+    var pbrMat = new BABYLON.PBRMaterial("pbrMat", scene);
+    pbrMat.albedoColor = BABYLON.Color3.Yellow(); // 색상 변경
+    pbrMat.metallic = 0; // metallic 설정
+    var tex = new BABYLON.Texture("textures/crate.png", scene); // 텍스처 불러옴
+    pbrMat.albedoTexture = tex; // pbrMat에 텍스처 적용
+    box.material = pbrMat; // box에 material 적용
+    ```
+   - 3-1. **albedoColor와 albedoTexture의 역할**:
+     - `albedoColor`는 PBRMaterial의 기본 색상을 설정한다.
+     - `albedoTexture`는 Material에 적용할 텍스처를 정의한다.
+     - 이들은 물체의 색과 질감을 더욱 사실적으로 표현하는 데 기여한다.
+   - 3-2. **metallic의 의미와 사용**:
+     - `metallic` 속성은 Material이 금속성을 얼마나 가지고 있는지 정의한다.
+     - 값이 0이면 비금속성, 1에 가까우면 금속성을 나타낸다.
+     - 기본값은 0이지만, 설정하지 않으면 Material이 까맣게 보일 수 있다.
+
+<br/>
+
+4. **ShaderMaterial**:
+- `ShaderMaterial`은 사용자 정의 셰이더를 적용할 수 있는 Material이다.
+- 이를 통해 고유한 렌더링 효과를 생성할 수 있다.
+- 사용자가 직접 작성한 셰이더 코드를 통해 복잡한 시각적 효과를 구현한다.
+- 예시:
+    ```javascript
+    var shaderMaterial = new BABYLON.ShaderMaterial("shader", scene, {
+        vertex: "custom", 
+        fragment: "custom",
+    }, {
+        attributes: ["position", "normal", "uv"],
+        uniforms: ["world", "worldView", "worldViewProjection", "view", "projection"]
+    });
+    ```
+
+<br/>
+
+5. **GroundMaterial**:
+- GroundMaterial은 지면이나 바닥에 사용되는 특별한 형태의 Material이다.
+- 이는 주로 지형이나 환경의 바닥을 표현하는 데 사용된다.
+- `diffuseTexture` 속성을 사용하여 지면의 질감을 설정한다.
+- 예시:
+    ```javascript
+    var groundMaterial = new BABYLON.StandardMaterial("ground", scene);
+    groundMaterial.diffuseTexture = new BABYLON.Texture("textures/ground.jpg", scene);
+    ```
+    - 5-1. **uScale과 vScale의 역할**:
+        - `uScale`과 `vScale`은 텍스처 매핑에서 사용된다.
+        - `uScale`은 텍스처의 가로 크기를 조절한다.
+        - `vScale`은 텍스처의 세로 크기를 조절한다.
+        - 이를 통해 텍스처가 3D 객체에 적용되는 방식을 제어한다.
+        - 예시:
+            ```javascript
+            groundMaterial.diffuseTexture.uScale = 6; // u크기 설정 (이미지 가로 크기)
+            groundMaterial.diffuseTexture.vScale = 6; // v크기 설정 (이미지 세로 크기)
+            ```
+    - 5-2. **specularColor의 기능**:
+        - `specularColor`는 Material의 광택 색상을 정의한다.
+        - 이는 물체가 빛을 반사할 때 나타나는 하이라이트의 색을 결정한다.
+        - 광택 색상을 조절하여 물체의 물질감과 광택도를 제어할 수 있다.
+        - 예시:
+            ```javascript
+            groundMaterial.specularColor = new BABYLON.Color3(0, 0, 0); // specular색상 변경
+            ```
+
+<br/>
+<br/>
+
 
 ## Inspector
 
