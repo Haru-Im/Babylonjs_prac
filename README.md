@@ -7,6 +7,7 @@
 -  [Shaders](#shaders)
 - [Colors](#colors)
 - [Lights](#lights)
+- [Shadow](#shadow)
 - [Engine Options](#engine-options)
     - [antialias](#antialias)
 - [Material](#material)
@@ -188,6 +189,47 @@ BabylonJS와 같은 3D 그래픽 환경에서 'Diffuse Light', 'Ambient Light', 
 <br/>
 <br/>
 
+## Shadow
+
+1. **그림자의 기본 개념**:
+- 그림자는 물체가 빛의 영향을 받아 생성되는 어두운 영역이다.
+- Babylon.js에서는 `directional`, `spot`, `point` 등의 빛(Light) 종류에 따라 그림자가 생성된다.
+- 그림자는 빛의 방향, 강도 및 물체의 형태에 따라 다르게 나타난다.
+
+<br/>
+
+2. **ShadowGenerator**:
+- `ShadowGenerator`는 그림자를 생성하기 위한 객체이다.
+- 생성자는 그림자의 해상도와 그림자를 생성하는 빛을 파라미터로 받는다.
+- 예시:
+    ```javascript
+    var shadowGenerator = new BABYLON.ShadowGenerator(1024, dirLight);
+    shadowGenerator.addShadowCaster(box);   // box가 그림자를 생성하도록 설정
+    shadowGenerator.useExponentialShadowMap = true;
+
+    ground.receiveShadows = true; // 땅이 그림자를 받도록 설정
+    ```
+    - 2-1. **useExponentialShadowMap**:
+        - `useExponentialShadowMap` 속성은 지수 그림자 맵(Exponential Shadow Map)을 사용하도록 설정한다.
+        - 이 방법은 빛과 멀어질수록 그림자가 부드럽게 퍼지는 효과를 생성한다.
+        - 그림자의 현실감을 높이는 데 유용하다.
+
+<br/>
+
+
+3. **그림자의 다양한 필터링 기술**:
+- Babylon.js는 다양한 그림자 필터링 기술을 제공한다:
+    - **PCF (Percentage-Closer Filtering)**: 그림자 경계를 부드럽게 처리하는 기법.
+    - **PCSS (Percentage-Closer Soft Shadows)**: 그림자의 경계를 더욱 현실적으로 부드럽게 처리.
+    - **Poisson Sampling**: 그림자의 경계에 랜덤성을 추가하여 부드러운 효과 생성.
+    - **Exponential Shadow Map**: 빛과의 거리에 따라 그림자 강도가 지수적으로 변화.
+    - **Blurred Exponential**: 더 부드러운 그림자 경계를 위해 지수 그림자 맵을 흐림 처리.
+    - **Close Exponential**: 물체에 가까운 부분의 그림자를 더 선명하게 표현.
+
+
+<br/>
+<br/>
+
 ## Engine Options
 
 ### antialias
@@ -234,7 +276,7 @@ const engine = new Engine(canvas, true); // antialias를 활성화
 <br/>
 
 3. **PBRMaterial**:
-- `PBRMaterial`은 물리 기반 렌더링(Pysical Basic Rendering) Material이다.
+- `PBRMaterial`은 물리 기반 렌더링(Pysically Based Rendering) Material이다.
 - 이는 물체의 표면이 실제 세계의 물리 법칙에 따라 빛을 반사하고 흡수하는 방식을 모방한다.
 - 예시:
     ```javascript
