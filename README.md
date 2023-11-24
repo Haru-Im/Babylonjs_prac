@@ -244,7 +244,6 @@ const engine = new Engine(canvas, true); // antialias를 활성화
     var tex = new BABYLON.Texture("textures/crate.png", scene); // 텍스처 불러옴
     pbrMat.albedoTexture = tex; // pbrMat에 텍스처 적용
     box.material = pbrMat; // box에 material 적용
-    ground.material = groundMaterial; // ground에 material 적용
     ```
    - 3-1. **albedoColor와 albedoTexture의 역할**:
      - `albedoColor`는 PBRMaterial의 기본 색상을 설정한다.
@@ -285,6 +284,7 @@ const engine = new Engine(canvas, true); // antialias를 활성화
     groundMaterial.diffuseTexture.uScale = 6; // u크기 설정 (이미지 가로 크기)
     groundMaterial.diffuseTexture.vScale = 6; // v크기 설정 (이미지 세로 크기)
     groundMaterial.specularColor = new BABYLON.Color3(0, 0, 0); // specular색상 변경
+    ground.material = groundMaterial; // ground에 material 적용
     ```
     - 5-1. **uScale과 vScale의 역할**:
         - `uScale`과 `vScale`은 텍스처 매핑에서 사용된다.
