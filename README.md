@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Canvas, Engine, Scene, Camera](#canvas-engine-scene-camera)
+- [Math.PI와 라디안](#mathpi와-라디안의-개념)
 -  [Shaders](#shaders)
 - [Colors](#colors)
 - [Lights](#lights)
@@ -36,6 +37,47 @@ Babylon.js에서 3D 그래픽스를 렌더링하는 데 필수적인 요소들�
 4. **Camera**:
 - Camera는 3D Scene에서의 관점을 정의한다. 이는 사용자가 3D 공간을 어떻게 보고 인식하는지 결정한다.
 - Babylon.js에서 다양한 유형의 카메라를 사용할 수 있으며, 이들은 회전, 줌, 이동 등 다양한 방식으로 Scene을 관찰할 수 있게 한다.
+
+<br/>
+<br/>
+
+## Math.PI와 라디안의 개념
+
+1. **라디안의 정의와 중요성**:
+- 라디안은 각도를 측정하는 단위이다.
+- 원의 중심에서 반지름 길이만큼 원의 둘레를 따라 이동했을 때의 각이 1 라디안이다.
+- 360도는 약 2π 라디안과 같으며, 이는 원 한 바퀴를 도는 각도이다.
+- 라디안은 컴퓨터 그래픽스와 수학 계산에서 효율적이고 표준화된 방식을 제공한다.
+
+<br/>
+
+2. **Math.PI의 역할과 사용**:
+- `Math.PI`는 원주율 π를 나타내는 상수이다.
+- 각도를 라디안으로 표현할 때 `Math.PI`를 사용한다.
+- 예를 들어, 객체를 180도 회전시키려면 `Math.PI` (π 라디안)를 사용한다.
+- `Math.PI`는 직접적인 라디안 계산에 사용되며, 기본적인 각도 회전에 적합하다.
+
+<br/>
+
+3. **BABYLON.Tools.ToRadians의 사용과 메커니즘**:
+- `BABYLON.Tools.ToRadians` 함수는 도 단위의 각도를 라디안으로 변환한다.
+- 내부적으로 `각도 / 180 * Math.PI`라는 공식을 사용한다.
+- 이 함수는 사용자가 도 단위로 주어진 각도를 라디안으로 쉽게 변환할 수 있게 한다.
+- `BABYLON.Tools.ToRadians`는 사용자가 특정 각도를 직접 입력하는 경우에 적합하다.
+
+<br/>
+
+4. **Babylon.js에서의 회전 예시**:
+- Babylon.js에서 박스를 생성하고 회전시키는 예시:
+    ```javascript
+    var box = BABYLON.MeshBuilder.CreateBox("box", {size: 1}, scene);
+    box.position.x = -2;
+    box.position.y = 0.5;
+    box.rotation = new BABYLON.Vector3(0, BABYLON.Tools.ToRadians(60), 0);
+    ```
+- 이 코드에서 `BABYLON.Tools.ToRadians(60)`은 60도를 라디안으로 변환한다.
+- 결과적으로 박스는 y축을 중심으로 약 1.047 라디안(60도에 해당)만큼 회전한다.
+
 
 <br/>
 <br/>
