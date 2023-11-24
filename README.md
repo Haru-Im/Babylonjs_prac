@@ -234,7 +234,7 @@ const engine = new Engine(canvas, true); // antialias를 활성화
 <br/>
 
 3. **PBRMaterial**:
-- `PBRMaterial`은 물리 기반 렌더링(PBR) Material이다.
+- `PBRMaterial`은 물리 기반 렌더링(Pysical Basic Rendering) Material이다.
 - 이는 물체의 표면이 실제 세계의 물리 법칙에 따라 빛을 반사하고 흡수하는 방식을 모방한다.
 - 예시:
     ```javascript
@@ -281,26 +281,20 @@ const engine = new Engine(canvas, true); // antialias를 활성화
     ```javascript
     var groundMaterial = new BABYLON.StandardMaterial("ground", scene);
     groundMaterial.diffuseTexture = new BABYLON.Texture("textures/ground.jpg", scene);
+    groundMaterial.diffuseTexture.uScale = 6; // u크기 설정 (이미지 가로 크기)
+    groundMaterial.diffuseTexture.vScale = 6; // v크기 설정 (이미지 세로 크기)
+    groundMaterial.specularColor = new BABYLON.Color3(0, 0, 0); // specular색상 변경
     ```
     - 5-1. **uScale과 vScale의 역할**:
         - `uScale`과 `vScale`은 텍스처 매핑에서 사용된다.
         - `uScale`은 텍스처의 가로 크기를 조절한다.
         - `vScale`은 텍스처의 세로 크기를 조절한다.
         - 이를 통해 텍스처가 3D 객체에 적용되는 방식을 제어한다.
-        - 예시:
-            ```javascript
-            groundMaterial.diffuseTexture.uScale = 6; // u크기 설정 (이미지 가로 크기)
-            groundMaterial.diffuseTexture.vScale = 6; // v크기 설정 (이미지 세로 크기)
-            ```
+
     - 5-2. **specularColor의 기능**:
         - `specularColor`는 Material의 광택 색상을 정의한다.
         - 이는 물체가 빛을 반사할 때 나타나는 하이라이트의 색을 결정한다.
         - 광택 색상을 조절하여 물체의 물질감과 광택도를 제어할 수 있다.
-        - 예시:
-            ```javascript
-            groundMaterial.specularColor = new BABYLON.Color3(0, 0, 0); // specular색상 변경
-            ```
-
 <br/>
 <br/>
 
