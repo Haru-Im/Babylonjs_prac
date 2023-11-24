@@ -244,6 +244,7 @@ const engine = new Engine(canvas, true); // antialias를 활성화
     var tex = new BABYLON.Texture("textures/crate.png", scene); // 텍스처 불러옴
     pbrMat.albedoTexture = tex; // pbrMat에 텍스처 적용
     box.material = pbrMat; // box에 material 적용
+    ground.material = groundMaterial; // ground에 material 적용
     ```
    - 3-1. **albedoColor와 albedoTexture의 역할**:
      - `albedoColor`는 PBRMaterial의 기본 색상을 설정한다.
